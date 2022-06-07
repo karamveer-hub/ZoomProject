@@ -1,0 +1,66 @@
+   let all_images=document.querySelectorAll(".main_div > div .content img")
+        for (let index = 0; index < all_images.length; index++) {
+            
+           all_images[index].addEventListener("mouseover",(e)=>{
+               e.target.style.transform="scale(1.5)"
+                display_section.style.opacity="1"
+                if(index==0){
+                    display_section_upperdiv.children[0].textContent="Zoom Chat"
+                    display_section_upperdiv.children[1].src="chatzoom.png"
+                display_section_lowerdiv_p.textContent="Included with your account, our chat solution simplifies workflows, boosts productivity, and ensures employees can collaborate securely, both internally and externally."
+
+                }
+                else if(index==1){
+                display_section_upperdiv.children[0].textContent="Zoom Phone"
+                display_section_upperdiv.children[1].src="MeetingZoom.png"
+                display_section_lowerdiv_p.textContent="Build stronger relationships, supercharge collaboration, and create an engaging meeting experience with HD video and audio for up to 1,000 participants."
+
+             }  
+             else if(index==2){
+                display_section_upperdiv.children[0].textContent="Zoom Phone"
+                display_section_upperdiv.children[1].src="phoneZoom.png"
+                display_section_lowerdiv_p.textContent="Power your voice communications with our global cloud phone solution with secure call routing, call queues, SMS, elevate calls to meetings, and much more."
+
+             }  
+             else if(index==3){
+                display_section_upperdiv.children[0].textContent="Zoom Developer Platform APIs & SDKs"
+                display_section_upperdiv.children[1].src="platform.png"
+                display_section_lowerdiv_p.textContent="Leverage our APIs, SDKs, webhooks, and more to build powerful applications, custom integrations, and new functionalities that enrich Zoom experiences."
+
+             }  
+             else if(index==4){
+                display_section_upperdiv.children[0].textContent="Zoom for Home"
+                display_section_upperdiv.children[1].src="Zoomhome.png"
+                display_section_lowerdiv_p.textContent="Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding, and annotation on your personal collaboration device."
+
+             }  
+             else if(index==5){
+                display_section_upperdiv.children[0].textContent="OnZoom"
+                display_section_upperdiv.children[1].src="onZoom2.png"
+                display_section_lowerdiv_p.textContent="Hosted online experiences that are easily monetized and scalable to new audiences."
+
+             }  
+             else if(index==6){
+                display_section_upperdiv.children[0].textContent="Zoom App Marketplace"
+                display_section_upperdiv.children[1].src="ZoomApp.png"
+                display_section_lowerdiv_p.textContent="Enhance and streamline your Zoom experience with 1,000+ apps and integrations for scheduling, collaboration, education, transcription, CRM, and more."
+
+             }  
+             else if(index==7){
+                display_section_upperdiv.children[0].textContent="Zoom Events & Video Webinars"
+                display_section_upperdiv.children[1].src="webinarsZoom.png"
+                display_section_lowerdiv_p.textContent="Zoom offers Video Webinars and our newest product Zoom Events to accommodate all of your virtual event needs. Create virtual experiences that attendees will love. Get started today with Zoom Events and Video Webinars."
+
+             }  
+             else if(index==8){
+                display_section_upperdiv.children[0].textContent="Zoom Rooms"
+                display_section_upperdiv.children[1].src="chatRooms.png"
+                display_section_lowerdiv_p.textContent="Adapt your conference rooms to changing workforce needs while balancing office and remote experiences with HD video and audio, wireless content sharing, and interactive whiteboarding."
+
+             }  
+             else{
+                e.target.style.transform="scale(1)"
+             }
+                
+            })
+            ;

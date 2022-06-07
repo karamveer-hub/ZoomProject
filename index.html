@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <section class="zoom_text">
+            <h3>ZOOM</h3>
+        </section>
+
+        <div class="main_div">
+            <div>
+                <div class="content">
+                    <img src="chat.png"  alt="">
+                    <!-- <p>Chat</p> -->
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="meetings.png" alt="">
+                    <!-- <p>Chat</p> -->
+
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="phone2.png" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="developer.png" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="zoomforhome.png" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="onzoom.png" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="marketplace.png" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="icon-zoom-events.svg" height="65px" width="65px" alt="">
+                </div>
+            </div>
+            <div>
+                <div class="content">
+
+                    <img src="zoomrooms.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="outer_display_section">
+
+        <section class="display_section">
+            <div class="upper_div">
+                <p></p>
+                <img src="chat.png" alt="">
+            </div>
+            <div class="lower_div">
+                <p>Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding, and
+                    annotation on your personal collaboration device.</p>
+                    <a href="#">See it in action</a>
+                    <a href="#">Product Page</a>
+                </div>
+            </section>
+        </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        let data = [
+            {
+                upperDivTextContent: "Zoom Chat",
+                src: "chatZoom.png",
+                lowerDivTextContent: "Included with your account, our chat solution simplifies workflows, boosts productivity, and ensures employees can collaborate securely, both internally and externally."
+            },
+            {
+                upperDivTextContent: "Zoom Meetings",
+                src: "MeetingZoom.png",
+                lowerDivTextContent: "Build stronger relationships, supercharge collaboration, and create an engaging meeting experience with HD video and audio for up to 1,000 participants."
+            },
+            {
+                upperDivTextContent: "Zoom Phone",
+                src: "phoneZoom.png",
+                lowerDivTextContent: "Power your voice communications with our global cloud phone solution with secure call routing, call queues, SMS, elevate calls to meetings, and much more."
+            },
+            {
+                upperDivTextContent: "Zoom Developer Platform APIs & SDKs",
+                src: "platform.png",
+                lowerDivTextContent: "Leverage our APIs, SDKs, webhooks, and more to build powerful applications, custom integrations, and new functionalities that enrich Zoom experiences."
+            },
+            {
+                upperDivTextContent: "Zoom for Home",
+                src: "Zoomhome.png",
+                lowerDivTextContent: "Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding, and annotation on your personal collaboration device."
+            },
+            {
+                upperDivTextContent: "OnZoom",
+                src: "onZoom2.png",
+                lowerDivTextContent: "Hosted online experiences that are easily monetized and scalable to new audiences."
+            },
+            {
+                upperDivTextContent: "Zoom App Marketplace",
+                src: "ZoomApp.png",
+                lowerDivTextContent: "Enhance and streamline your Zoom experience with 1,000+ apps and integrations for scheduling, collaboration, education, transcription, CRM, and more."
+            },
+            {
+                upperDivTextContent: "Zoom Events & Video Webinars",
+                src: "webinarsZoom.png",
+                lowerDivTextContent: "Zoom offers Video Webinars and our newest product Zoom Events to accommodate all of your virtual event needs. Create virtual experiences that attendees will love. Get started today with Zoom Events and Video Webinars."
+            },
+            {
+                upperDivTextContent: "Zoom Rooms",
+                src: "chatRooms.png",
+                lowerDivTextContent: "Adapt your conference rooms to changing workforce needs while balancing office and remote experiences with HD video and audio, wireless content sharing, and interactive whiteboarding."
+            },
+
+
+
+        ]
+
+        let mouseover = false;
+        let display_section = document.querySelector(".display_section")
+        let display_section_upperdiv = document.querySelector(".display_section .upper_div")
+        let display_section_lowerdiv_p = document.querySelector(".display_section .lower_div").children[0]
+        let all_divs = document.querySelectorAll(".main_div > div")
+        let all_content = document.querySelectorAll(".main_div > div .content")
+        let all_images = document.querySelectorAll(".main_div > div .content img")
+        let rotation = 0;
+            
+        for (let index = 0; index < all_images.length; index++) {
+            rotation = rotation + 40;
+            all_divs[index].style.transform = `rotate(${rotation}deg)`;
+            all_content[index].style.transform = `translate(-32.5px,32.5px) rotate(-${rotation+7}deg)`;
+        }
+        all_images.forEach((img, index) => {
+            img.addEventListener("mouseover", (e) => {
+                display_section.classList.add("animate")
+                display_section.style.opacity=1
+                setTimeout(() => {
+                    
+                    display_section.classList.remove("animate")
+                }, 100);
+                
+                for(let i=0;i<all_images.length;i++){
+                    if(e.target==all_images[i])
+                        all_images[i].style.transform="scale(1.3)";
+                else
+                    all_images[i].style.transform="scale(1)"
+            }
+             data.filter(dataa => {
+                    addData(data[index])
+             })
+
+                //     if(index==0){
+                //         display_section_upperdiv.children[0].textContent="Zoom Chat"
+                //         display_section_upperdiv.children[1].src="chatzoom.png"
+                //     display_section_lowerdiv_p.textContent="Included with your account, our chat solution simplifies workflows, boosts productivity, and ensures employees can collaborate securely, both internally and externally."
+
+                //     }
+                //     else if(index==1){
+                //     display_section_upperdiv.children[0].textContent="Zoom Meetings"
+                //     display_section_upperdiv.children[1].src="MeetingZoom.png"
+                //     display_section_lowerdiv_p.textContent="Build stronger relationships, supercharge collaboration, and create an engaging meeting experience with HD video and audio for up to 1,000 participants."
+
+                //  }  
+                //  else if(index==2){
+                //     display_section_upperdiv.children[0].textContent="Zoom Phone"
+                //     display_section_upperdiv.children[1].src="phoneZoom.png"
+                //     display_section_lowerdiv_p.textContent="Power your voice communications with our global cloud phone solution with secure call routing, call queues, SMS, elevate calls to meetings, and much more."
+
+                //  }  
+                //  else if(index==3){
+                //     display_section_upperdiv.children[0].textContent="Zoom Developer Platform APIs & SDKs"
+                //     display_section_upperdiv.children[1].src="platform.png"
+                //     display_section_lowerdiv_p.textContent="Leverage our APIs, SDKs, webhooks, and more to build powerful applications, custom integrations, and new functionalities that enrich Zoom experiences."
+
+                //  }  
+                //  else if(index==4){
+                //     display_section_upperdiv.children[0].textContent="Zoom for Home"
+                //     display_section_upperdiv.children[1].src="Zoomhome.png"
+                //     display_section_lowerdiv_p.textContent="Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding, and annotation on your personal collaboration device."
+
+                //  }  
+                //  else if(index==5){
+                //     display_section_upperdiv.children[0].textContent="OnZoom"
+                //     display_section_upperdiv.children[1].src="onZoom2.png"
+                //     display_section_lowerdiv_p.textContent="Hosted online experiences that are easily monetized and scalable to new audiences."
+
+                //  }  
+                //  else if(index==6){
+                //     display_section_upperdiv.children[0].textContent="Zoom App Marketplace"
+                //     display_section_upperdiv.children[1].src="ZoomApp.png"
+                //     display_section_lowerdiv_p.textContent="Enhance and streamline your Zoom experience with 1,000+ apps and integrations for scheduling, collaboration, education, transcription, CRM, and more."
+
+                //  }  
+                //  else if(index==7){
+                //     display_section_upperdiv.children[0].textContent="Zoom Events & Video Webinars"
+                //     display_section_upperdiv.children[1].src="webinarsZoom.png"
+                //     display_section_lowerdiv_p.textContent="Zoom offers Video Webinars and our newest product Zoom Events to accommodate all of your virtual event needs. Create virtual experiences that attendees will love. Get started today with Zoom Events and Video Webinars."
+
+                //  }  
+                //  else if(index==8){
+                //     display_section_upperdiv.children[0].textContent="Zoom Rooms"
+                //     display_section_upperdiv.children[1].src="chatRooms.png"
+                //     display_section_lowerdiv_p.textContent="Adapt your conference rooms to changing workforce needs while balancing office and remote experiences with HD video and audio, wireless content sharing, and interactive whiteboarding."
+
+                //  }  
+                //  else{
+                //     e.target.style.transform="scale(1)"
+                //  }
+
+
+            })
+            img.addEventListener("mouseout",()=>{
+                // display_section.classList.remove("animate")
+            })
+        })
+
+        function addData(getData) {
+            display_section_upperdiv.children[0].textContent = getData.upperDivTextContent
+            display_section_upperdiv.children[1].src = getData.src
+            display_section_lowerdiv_p.textContent = getData.lowerDivTextContent
+        }
+    </script>
+</body>
+
+</html>
