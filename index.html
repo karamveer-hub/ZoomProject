@@ -19,14 +19,14 @@
         <div class="main_div">
             <div>
                 <div class="content">
-                    <img src="chat.png"  alt="">
+                    <img src="chat.png" alt="chat">
                     <!-- <p>Chat</p> -->
                 </div>
             </div>
             <div>
                 <div class="content">
 
-                    <img src="meetings.png" alt="">
+                    <img src="meetings.png" alt="meetings">
                     <!-- <p>Chat</p> -->
 
                 </div>
@@ -34,31 +34,31 @@
             <div>
                 <div class="content">
 
-                    <img src="phone2.png" alt="">
+                    <img src="phone2.png" alt="phone">
                 </div>
             </div>
             <div>
                 <div class="content">
 
-                    <img src="developer.png" alt="">
+                    <img src="developer.png" alt="developer">
                 </div>
             </div>
             <div>
                 <div class="content">
 
-                    <img src="zoomforhome.png" alt="">
+                    <img src="zoomforhome.png" alt="zoomforhome">
                 </div>
             </div>
             <div>
                 <div class="content">
 
-                    <img src="onzoom.png" alt="">
+                    <img src="onzoom.png" alt="onzoom">
                 </div>
             </div>
             <div>
                 <div class="content">
 
-                    <img src="marketplace.png" alt="">
+                    <img src="marketplace.png" alt="marketplace">
                 </div>
             </div>
             <div>
@@ -70,7 +70,7 @@
             <div>
                 <div class="content">
 
-                    <img src="zoomrooms.png" alt="">
+                    <img src="zoomrooms.png" alt="zoomrooms">
                 </div>
             </div>
         </div>
@@ -80,20 +80,23 @@
 
         <section class="display_section">
             <div class="upper_div">
-                <p></p>
+                <p class="text"></p>
                 <img src="chat.png" alt="">
             </div>
             <div class="lower_div">
-                <p>Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding, and
+                <p class="text">Bring the functionality of the office to your home with video meetings, phone calls, whiteboarding,
+                    and
                     annotation on your personal collaboration device.</p>
-                    <a href="#">See it in action</a>
-                    <a href="#">Product Page</a>
-                </div>
-            </section>
-        </div>
+                <a href="#">See it in action</a>
+                <a href="#">Product Page</a>
+            </div>
+        </section>
+    </div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
 
@@ -150,36 +153,82 @@
 
         let mouseover = false;
         let display_section = document.querySelector(".display_section")
+        let display_sectionP = document.querySelector(".display_section .upper_div > p")
         let display_section_upperdiv = document.querySelector(".display_section .upper_div")
         let display_section_lowerdiv_p = document.querySelector(".display_section .lower_div").children[0]
         let all_divs = document.querySelectorAll(".main_div > div")
         let all_content = document.querySelectorAll(".main_div > div .content")
         let all_images = document.querySelectorAll(".main_div > div .content img")
         let rotation = 0;
-            
+
         for (let index = 0; index < all_images.length; index++) {
             rotation = rotation + 40;
             all_divs[index].style.transform = `rotate(${rotation}deg)`;
-            all_content[index].style.transform = `translate(-32.5px,32.5px) rotate(-${rotation+7}deg)`;
+            all_content[index].style.transform = `translate(-32.5px,32.5px) rotate(-${rotation + 7}deg)`;
         }
+        let that = []
         all_images.forEach((img, index) => {
             img.addEventListener("mouseover", (e) => {
-                display_section.classList.add("animate")
-                display_section.style.opacity=1
-                setTimeout(() => {
-                    
-                    display_section.classList.remove("animate")
-                }, 100);
-                
-                for(let i=0;i<all_images.length;i++){
-                    if(e.target==all_images[i])
-                        all_images[i].style.transform="scale(1.3)";
-                else
-                    all_images[i].style.transform="scale(1)"
-            }
-             data.filter(dataa => {
+                that.push(e.currentTarget.alt)
+                // display_section.style.opacity=1
+                if (that.length ==1) {
+                    display_section.classList.add("animate")
+                    display_sectionP.classList.add("animateP")
+                    display_section_lowerdiv_p.classList.add("animateP")
+                    console.log("0 wala")
+                    if (that.length > 2) that.shift()
+                }
+                else {
+                    if (that.length > 2) that.shift()
+                    if (that[0]==that[1]) {
+                        display_section.classList.add("animate")
+                        display_section.classListP.add("animateP")
+                        display_section_lowerdiv_p.classList.add("animateP")
+                        console.log("match hogye")
+                    }
+                    else{
+                       display_section.classList.remove("animate")
+                       display_sectionP.classList.remove("animateP")
+                       display_section_lowerdiv_p.classList.remove("animateP")
+                       setTimeout(() => {
+                           display_section.classList.add("animate")
+                           display_sectionP.classList.add("animateP")
+                           display_section_lowerdiv_p.classList.add("animateP")
+                       }, 10);
+                        console.log("alag")
+                    }
+                }
+                console.log(that[0], that[1])
+                for (let i = 0; i < all_images.length; i++) {
+
+                    if (e.target == all_images[i]) {
+                        all_images[i].style.transform = "scale(1.3)";
+                    }
+                    else {
+                        all_images[i].style.transform = "scale(1)"
+
+                    }
+                }
+                // let that=[]
+                for (let i = 0; i < all_images.length; i++) {
+                    // that.push(all_images[1].alt)
+                    // console.log(that,"ALL img" ,all_images[i].alt)
+                    //    if(that==all_images[i].alt){
+                    //         display_section.style.opacity=1
+                    //        console.log("match")
+
+                    //     }
+                    //     else{
+                    //         console.log("mathnononotc")
+                    //         display_section.style.opacity=0
+                    //         // display_section.style.opacity=1
+                    //     }
+
+
+                }
+                data.filter(dataa => {
                     addData(data[index])
-             })
+                })
 
                 //     if(index==0){
                 //         display_section_upperdiv.children[0].textContent="Zoom Chat"
@@ -241,9 +290,9 @@
 
 
             })
-            img.addEventListener("mouseout",()=>{
-                // display_section.classList.remove("animate")
-            })
+            // img.removeEventListener("mouseover",()=>{
+            //     // display_section.classList.remove("animate")
+            // })
         })
 
         function addData(getData) {
